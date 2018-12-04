@@ -1,0 +1,9 @@
+[package]
+name = "phina-wasm-sample"
+version = "0.1.0"
+authors = ["pentamania <pentamania_03@yahoo.co.jp>"]
+
+[dependencies]
+
+[lib]
+crate-type = ["cdylib"]

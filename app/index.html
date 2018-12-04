@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="pentamania">
+  <meta http-equiv="x-ua-compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>phina.js wasm sample</title>
+</head>
+<body>
+
+<script src='https://cdn.jsdelivr.net/npm/phina.js@v0.2.2/build/phina.min.js'></script>
+<script src='./wasm-loader.js'></script>
+<script src='./mainscene.js'></script>
+
+<script>
+  phina.globalize();
+
+  phina.main(function() {
+    var app = phina.game.GameApp({
+      title: "phina wasm sample",
+      startLabel: 'main',
+      backgroundColor: "#30CEE0",
+      assets: {
+        image: {
+          // CORSのため、cdnは使えない
+          tomapiko: "assets/tomapiko_ss.png",
+          splash: "assets/splash.png",
+        },
+        spritesheet: {
+          tomapiko: "https://cdn.jsdelivr.net/npm/phina.js@0.2.3/assets/tmss/character.tmss",
+        },
+        wasm: {
+          "filter_mod": {
+            path: './wasm/main.wasm',
+            imports: {} // JS側からwasmへメソッド持ってく場合
+          }
+        }
+      }
+    });
+
+    app.run();
+  });
+</script>
+</body>
+</html>
